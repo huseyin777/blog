@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blog Home</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+  
+  <div class="wrapper">
+    <div class="content">
+      <div class="container mt-5 text-center">
+        <h1 class="mb-4">Blog Posts</h1>
+        <a href="/create" class="btn btn-primary mb-3">Create a New Post</a>
+
+        <!-- Fotoğraf Ekleme -->
+        <div class="my-4">
+          <video id="myVideo" width="200" autoplay muted>
+            <source src="source/blog4.mp4" type="video/mp4">
+            Tarayıcınız video etiketini desteklemiyor.
+          </video>
+         <img src="../source/2024.png" alt="Resmin alternatif yazısı" class="img-fluid" style="max-width: 200px; height: auto;"> 
+         <img src="../source/blog2.png" alt="Resmin alternatif yazısı" class="img-fluid" style="max-width: 200px; height: auto;"> 
+          <video id="myVideo" width="200" autoplay muted>
+            <source src="../source/blog3.mp4" type="video/mp4">
+            Tarayıcınız video etiketini desteklemiyor.
+          </video>
+          
+          
+          
+        
+          </div>
+        
+
+        <div class="row">
+          <% posts.forEach((post, index) => { %>
+            <div class="col-md-4 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title"><%= post.title %></h5>
+                  <p class="card-text"><%= post.content %></p>
+                  <a href="/edit/<%= index %>" class="btn btn-warning">Edit</a>
+                  <form action="/delete/<%= index %>" method="POST" class="d-inline">
+                    <button type="submit" class="btn btn-danger"><i class="fas fa-times"></i> Delete</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          <% }); %>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="wave" id="wave1"></div>
+      <div class="wave" id="wave2"></div>
+      <div class="wave" id="wave3"></div>
+      <div class="wave" id="wave4"></div>
+      
+      <ul class="contact_info">
+        <li><a href="tel:+1234567890"><i class="fas fa-phone"></i></a>+90 546 977 74 46</li>
+        <li><a href="mailto:info@example.com"><i class="fas fa-envelope"></i></a>huseyinberkk33@gmail.com</li>
+        <li><a href="https://goo.gl/maps/example"><i class="fas fa-map-marker-alt"></i></a>Mersin</li>
+      </ul>
+      <ul class="social_icon">
+        <li><a href="https://www.facebook.com/mustafa.berk.338/"><i class="fab fa-facebook"></i></a></li>
+        <li><a href=""><i class="fab fa-twitter"></i></a></li>
+        <li><a href="https://www.instagram.com/huseyin__berk/"><i class="fab fa-instagram"></i></a></li>
+        <li><a href="https://www.linkedin.com/in/huseyin-berk-029a8b313/"><i class="fab fa-linkedin"></i></a></li>
+      </ul>
+    
+      <ul class="menu">
+        <li><a href="/">Home</a></li>
+        <li><a href="/create">Create Post</a></li>
+      </ul>
+      <p></p>
+      <p></p>
+    </footer>
+  </div>
+  <script>
+    window.onload = function() {
+      var video = document.getElementById("myVideo");
+      video.play();
+      video.onended = function() {
+        video.pause();
+      };
+    };
+  </script>
+</body>
+</html>
